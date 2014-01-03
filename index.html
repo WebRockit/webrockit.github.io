@@ -1,47 +1,56 @@
 <!DOCTYPE html>
 <html>
-
   <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Webrockit.github.io : WebRockit Documentation" />
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
 
-    <title>Webrockit.github.io</title>
+    <title>Webrockit.github.io by WebRockit</title>
   </head>
 
   <body>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/WebRockit">View on GitHub</a>
+    <header>
+      <div class="container">
+        <h1>Webrockit.github.io</h1>
+        <h2>WebRockit Documentation</h2>
 
-          <h1 id="project_title">Webrockit.github.io</h1>
-          <h2 id="project_tagline">WebRockit Documentation</h2>
+        <section id="downloads">
+          <a href="https://github.com/WebRockit" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
 
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
+    <div class="container">
+      <section id="main_content">
         <h3>
 <a name="welcome-to-the-github-pages-for-webrockit" class="anchor" href="#welcome-to-the-github-pages-for-webrockit"><span class="octicon octicon-link"></span></a>Welcome to the Github pages for WebRockit</h3>
 
-<p>This is awesome.</p>
+<p>WebRockit uses a headless web browser to measure how fast web pages load, relative to what a real user might experience. WebRockit also captures interesting metrics about the page load (time to first byte, number of assets, size of response, etc) and can draw some time-series graphs using that data. WebRockit is intended for periodic collection of this data, but is not intended to stress test a web host. WebRockit combines the scalability of <a href="http://sensuapp.org/" target="_blank">Sensu</a>, the accessibility of <a href="http://graphite.wikidot.com/" target="_blank">Graphite</a>, backed by the reliability of <a href="http://qt-project.org/doc/qt-5.0/qtwebkit/qtwebkit-index.html" target="_blank">WebKit</a>. WebRockit is designed for a web-ops audience, but is a useful toolkit for the entire spectrum of web professionals.  WebRockit will run on Fedora &gt;=19 and Centos=&gt;6.0, with future support for Debian, Ubuntu, and other popular Linux distributions.  </p>
+
+<p>WebRockit comes with instructions on how to bring up new Graphite and Sensu server components, but may also fit in with existing Graphite and Sensu services you are already running.  WebRockit aims to provide all necessary services where all the services are geographically local to each other, but may function when communicating with geo-remote services (YMMV).  </p>
+
+<p>WebRockit exposes a REST API so url checks can be added/changed/removed through automation. We follow the <a href="https://github.com/godaddy/gdapi/blob/master/specification.md" target="_blank">GD API</a> specification. The WebRockit UI uses the API to handle all aspects of the human visualiation and administration interface. WebRockit also includes a component to apply checks to Sensu and restart Sensu services where necessary, using the WebRockit API. WebRockit is able to poll sites which do not have active public DNS or where you wish to override the standard DNS resolution for a host.</p> 
+<p>WebRockit is able to poll at least 500 unique URLs every 5 minutes where each URL is less than 1.5MB in size, from a single polling server (with 1GB ram, 2x 1.8Ghz quad core Xeons).
+<img src="images/webrockit_infrastructure.png" alt="WebRockit Infrastructure"></p>
+
+<p>While it is technically possible to mash this toolkit into other purposes (OpenStack service monitoring you say? Go on..), we don't encourage it (yet). This toolkit has one main job, and that's to measure how webpages load over time in a browser.  Franken-steining this into other tasks might work -- but we would caution: understand what problems you are trying to solve first, before you end up building a bridge to Mars. So far, we haven't found a great open source solution to address our challenges, so that's why we did this.  </p>
+
+<p>If you add network-diversity to where the polls are made from, you can get a bit of triangulation. While that's nifty and potentially useful (West Coast vs East Coast perspective?), one important thing this suite doesn't do yet is tie activity to performance. One cannot rely solely on this data to make business decisions.  You must understand what activity is leading to your performance state. This can mean diving into answering questions such as:</p>
+
+<ul>
+<li>Is my cpu a bottleneck? Are my cores %100 busy for my poorly threaded application?</li>
+<li>Are my requests periodically being served from a cold cache or hitting a cache's max TTL? (DNS, opcode, inode, dentry, TCP metrics, DB query cache, and so on)</li>
+<li>Am I hitting a network resource limitation? (Saturated link, asynchronous route through a lossy channel, etc)</li>
+<li>And more!<br>
+</li>
+</ul><p>We hope to eventually include concurrent activity data point collection for folks that control their own infrastructure, so that bottlenecks can be identified and alarms can be raised -- but that is further down in our list of goals. Even in that space, correlation is not always causation can hold true (but as we've found, not always).</p>
       </section>
     </div>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
-
     
-
   </body>
 </html>
