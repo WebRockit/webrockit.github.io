@@ -1,4 +1,4 @@
-webrockit.github.io
+webrockit.io
 ===================
 
 WebRockit Documentation
