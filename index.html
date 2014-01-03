@@ -35,7 +35,7 @@
 
 <p>WebRockit exposes a REST API so url checks can be added/changed/removed through automation. We follow the <a href="https://github.com/godaddy/gdapi/blob/master/specification.md" target="_blank">GD API</a> specification. The WebRockit UI uses the API to handle all aspects of the human visualiation and administration interface. WebRockit also includes a component to apply checks to Sensu and restart Sensu services where necessary, using the WebRockit API. WebRockit is able to poll sites which do not have active public DNS or where you wish to override the standard DNS resolution for a host.</p> 
 <p>WebRockit is able to poll at least 500 unique URLs every 5 minutes where each URL is less than 1.5MB in size, from a single polling server (with 1GB ram, 2x 1.8Ghz quad core Xeons).
-<img src="images/webrockit_infrastructure.png" alt="WebRockit Infrastructure"></p>
+<img src="images/webrockit_infrastructure.thumb.png" alt="WebRockit Infrastructure"></p>
 
 <p>While it is technically possible to mash this toolkit into other purposes (OpenStack service monitoring you say? Go on..), we don't encourage it (yet). This toolkit has one main job, and that's to measure how webpages load over time in a browser.  Franken-steining this into other tasks might work -- but we would caution: understand what problems you are trying to solve first, before you end up building a bridge to Mars. So far, we haven't found a great open source solution to address our challenges, so that's why we did this.  </p>
 
